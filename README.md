@@ -34,3 +34,4 @@
 [![](https://img.shields.io/badge/Open_Issue-limegreen?style=for-the-badge)](https://github.com/XtrLumen/TS-Enhancer-Extreme/issues)
 [![](https://img.shields.io/badge/Join_Group-darkcyan?style=for-the-badge)](https://t.me/cirnoclass)
 [![](https://img.shields.io/badge/Sub_Channel-blue?style=for-the-badge)](https://t.me/realxtr)
+[![](https://img.shields.io/badge/Sub_Coolapk-green?style=for-the-badge)](http://www.coolapk.com/u/3644852)
