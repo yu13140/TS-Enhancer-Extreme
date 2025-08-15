@@ -1,4 +1,4 @@
-# TS Enhancer Extreme
+# Tricky Store Enhancer Extreme
 提升TrickyStore的使用体验,同时极致隐藏由解锁引导加载程序带来的相关检测点.
 
 ## 要求
