@@ -5,7 +5,7 @@
 > 本模块目前处于测试阶段,尚未完成!遇到问题请加入本页面底部群组反馈.
 
 ## 要求
-- 已安装[TrickyStore](https://github.com/5ec1cff/TrickyStore)模块
+- 已安装 [TrickyStore](https://github.com/5ec1cff/TrickyStore) 模块
 
 ## 用法
 1. 刷入模块并重启.
