@@ -1,6 +1,9 @@
 # Tricky Store Enhancer Extreme
 提升TrickyStore的使用体验,同时极致隐藏由解锁引导加载程序带来的相关检测点.
 
+> [!WARNING]
+> 本模块目前处于测试阶段,尚未完成!遇到问题请加入本页面底部群组反馈.
+
 ## 要求
 - 已安装[TrickyStore](https://github.com/5ec1cff/TrickyStore)模块
 
