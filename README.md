@@ -24,7 +24,6 @@
 
 ## 鸣谢
 - [KOWX712/Tricky-Addon-Update-Target-List](https://github.com/KOWX712/Tricky-Addon-Update-Target-List) - 仓库中可通过 STRONG 完整性的 Keybox.xml
-- [5ec1cff/KsuWebUIStandalone](https://github.com/5ec1cff/KsuWebUIStandalone) - KSU WebUI 的独立实现
 - [susfs4ksu-module](https://github.com/sidex15/susfs4ksu-module) - 部分属性值设置指令参考
 
 ## 链接
