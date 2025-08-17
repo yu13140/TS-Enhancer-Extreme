@@ -30,8 +30,8 @@
 - [sidex15/susfs4ksu-module](https://github.com/sidex15/susfs4ksu-module) - 部分属性值设置指令参考
 
 ## 链接
+[![](https://img.shields.io/badge/Open_Issue-goldenrod?style=for-the-badge)](https://github.com/XtrLumen/TS-Enhancer-Extreme/issues)
 [![](https://img.shields.io/badge/Change_log-orange?style=for-the-badge)](https://github.com/XtrLumen/TS-Enhancer-Extreme/blob/main/changelog.md)
-[![](https://img.shields.io/badge/Open_Issue-limegreen?style=for-the-badge)](https://github.com/XtrLumen/TS-Enhancer-Extreme/issues)
-[![](https://img.shields.io/badge/Join_Group-darkcyan?style=for-the-badge)](https://t.me/cirnoclass)
+[![](https://img.shields.io/badge/Join_Group-red?style=for-the-badge)](https://t.me/cirnoclass)
+[![](https://img.shields.io/badge/Sub_Coolapk-forestgreen?style=for-the-badge)](http://www.coolapk.com/u/3644852)
 [![](https://img.shields.io/badge/Sub_Channel-blue?style=for-the-badge)](https://t.me/realxtr)
-[![](https://img.shields.io/badge/Sub_Coolapk-green?style=for-the-badge)](http://www.coolapk.com/u/3644852)
