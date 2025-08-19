@@ -23,7 +23,7 @@
 
 ## 作用
 - 目前尚未实现全部预期功能
-- 已实现功能请查看 Release ZIP 内的 README.md
+- 已实现功能请查看 Pre-release ZIP 内的 README.md
 
 ## 鸣谢
 - [KOWX712/Tricky-Addon-Update-Target-List](https://github.com/KOWX712/Tricky-Addon-Update-Target-List) - 仓库中可通过 STRONG 完整性的 Keybox.xml
