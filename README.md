@@ -2,7 +2,7 @@
 提升TrickyStore的使用体验,同时极致隐藏由解锁引导加载程序产生的相关检测点.
 
 > [!WARNING]
-> 本模块目前处于测试阶段,尚未完成!遇到问题请加入本页面底部群组反馈.
+> 本模块目前处于测试阶段!遇到问题请加入本页面底部群组反馈.
 
 ## 要求
 - 已安装 [TrickyStore](https://github.com/5ec1cff/TrickyStore) 模块
@@ -28,7 +28,7 @@
 ## 鸣谢
 - [KOWX712/Tricky-Addon-Update-Target-List](https://github.com/KOWX712/Tricky-Addon-Update-Target-List) - 仓库中可通过 STRONG 完整性的 Keybox.xml
 - [sidex15/susfs4ksu-module](https://github.com/sidex15/susfs4ksu-module) - 部分属性值设置指令参考
-- [5ec1cff/cmd_wrapper](https://gist.github.com/5ec1cff/4b3a3ef329094e1427e2397cfa2435ff) - 扫平执行环境障碍
+- [5ec1cff/cmd-wrapper](https://gist.github.com/5ec1cff/4b3a3ef329094e1427e2397cfa2435ff) - 扫平执行环境障碍
 ## 链接
 [![](https://img.shields.io/badge/Open_Issue-goldenrod?style=for-the-badge)](https://github.com/XtrLumen/TS-Enhancer-Extreme/issues)
 [![](https://img.shields.io/badge/Change_log-orange?style=for-the-badge)](https://github.com/XtrLumen/TS-Enhancer-Extreme/blob/main/changelog.md)
