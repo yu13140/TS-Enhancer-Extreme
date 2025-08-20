@@ -5,12 +5,12 @@
 > 本模块目前处于测试阶段!遇到问题请加入本页面底部群组反馈.
 
 ## 要求
-- 已安装 [TrickyStore](https://github.com/5ec1cff/TrickyStore) 模块
+- 已安装 [TrickyStore](https://github.com/5ec1cff/TrickyStore) 或 [TrickyStoreOSS](https://github.com/beakthoven/TrickyStoreOSS) 模块
 
 ## 用法
 1. 刷入模块并重启.
 2. 进入WebUI界面配置(可选)
-3. 完事儿,极致省心.
+3. 完事,省心.
 
 ## 提示
 ### KernelSU 和 APatch
@@ -19,7 +19,7 @@
 ### Magisk
 - 打开 WebUI 独立软件的 Action 按钮
 - 支持 [WebUI X](https://github.com/MMRLApp/WebUI-X-Portable) 和 [KSUWebUIStandalone](https://github.com/5ec1cff/KsuWebUIStandalone)
-- 在未安装任何 WebUI 独立软件时自动安装 [KSUWebUIStandalone](https://github.com/5ec1cff/KsuWebUIStandalone)
+- 在未安装任何 WebUI 独立软件时自动安装 [WebUI-X-Portable](https://github.com/MMRLApp/WebUI-X-Portable)
 
 ## 作用
 - 目前尚未实现全部预期功能
