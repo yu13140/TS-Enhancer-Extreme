@@ -19,7 +19,7 @@
 ### Magisk
 - 打开 WebUI 独立软件的 Action 按钮
 - 支持 [WebUI X](https://github.com/MMRLApp/WebUI-X-Portable) 和 [KSUWebUIStandalone](https://github.com/5ec1cff/KsuWebUIStandalone)
-- 在未安装任何 WebUI 独立软件时自动安装 [WebUI-X-Portable](https://github.com/MMRLApp/WebUI-X-Portable)
+- 在未安装任何 WebUI 独立软件时自动安装 [KSUWebUIStandalone](https://github.com/5ec1cff/KsuWebUIStandalone)
 
 ## 作用
 - 目前尚未实现全部预期功能
