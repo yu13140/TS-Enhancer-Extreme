@@ -29,7 +29,7 @@
 - [KOWX712/Tricky-Addon-Update-Target-List](https://github.com/KOWX712/Tricky-Addon-Update-Target-List) - 仓库中可通过 STRONG 完整性的 Keybox.xml
 - [vvb2060/KeyAttestation](https://github.com/vvb2060/KeyAttestation) - 服务 [GetVBHash](https://github.com/XtrLumen/GetVBHash) 的代码来源
 - [5ec1cff/cmd-wrapper](https://gist.github.com/5ec1cff/4b3a3ef329094e1427e2397cfa2435ff) - 扫平执行环境障碍
-- 
+
 ## 链接
 [![](https://img.shields.io/badge/Open_Issue-goldenrod?style=for-the-badge)](https://github.com/XtrLumen/TS-Enhancer-Extreme/issues)
 [![](https://img.shields.io/badge/Change_log-orange?style=for-the-badge)](https://github.com/XtrLumen/TS-Enhancer-Extreme/blob/main/changelog.md)
