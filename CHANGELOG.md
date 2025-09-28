@@ -5,7 +5,7 @@
 - 扩充冲突模块列表.
 - 加回META-INF文件夹防止低版本Magisk无法解压.
 - 新增binaries文件夹,并将core重命名tseed放入其中.
-- 为抓取有效密钥后端功能扩充来源: [ tseed --stealkeybox < Basic |-a|-b| >]
+- 为抓取有效密钥后端功能扩充来源: [ tseed --stealkeybox < Basic |-a|-b| > ]
 - 显示多重共存具体信息,现在仅当Root实现同时安装在内核空间与用户空间才被判定存在.
 - 将GetVBHash服务精简并重写为Kotlin,使得支持FBE加密状态启动并提升成功率,更早执行.
 > 杂项
