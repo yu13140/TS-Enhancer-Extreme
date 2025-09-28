@@ -8,22 +8,26 @@ operate() {
     shift
     local operation="$1"
     shift
-    if [ "$operation" = "echo" ]; then
-      if [ "$1" = "-n" ]; then
-        shift
-        echo -n "$@"
-      else
-        echo "$@"
-      fi
-    elif [ "$operation" = "functions" ]; then
-      eval "${1%=*}=\"${1#*=}\""
-    elif [ "$operation" = "abort_verify" ]; then
-      echo "***********************************************"
-      echo "! $@"
-      print_cn "! 这个ZIP文件已损坏,请重新下载"
-      print_en "! This zip may be corrupted, please try downloading again"
-      abort "***********************************************"
-    fi
+    case "$operation" in
+      echo)
+        if [ "$1" = "-n" ]; then
+          shift
+          echo -n "$@"
+        else
+          echo "$@"
+        fi
+        ;;
+      functions)
+        eval "${1%=*}=\"${1#*=}\""
+        ;;
+      abort_verify)
+        echo "***********************************************"
+        echo "! $@"
+        print_cn "! 这个ZIP文件已损坏,请重新下载"
+        print_en "! This zip may be corrupted, please try downloading again"
+        abort "***********************************************"
+        ;;
+    esac
   fi
 }
 print_cn() { operate "CN" "echo" "$@"; }
@@ -112,8 +116,6 @@ if [ ! -f "$TMPDIR/verify.sh" ]; then
   abort_en "verify.sh not exists"
 fi
 source "$TMPDIR/verify.sh"
-extract "$ZIPFILE" 'verify.sh' "$TMPDIR_FOR_VERIFY"
-extract "$ZIPFILE" 'customize.sh' "$TMPDIR_FOR_VERIFY"
 #CHECK ENVIRONMENT#
 if [ "$RELEASE" -lt $MIN_RELEASE ]; then
   echo "***********************************************"

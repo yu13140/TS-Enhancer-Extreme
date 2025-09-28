@@ -32,16 +32,19 @@ operate() {
     shift
     local operation="$1"
     shift
-    if [ "$operation" = "echo" ]; then
-      if [ "$1" = "-n" ]; then
-        shift
-        echo -n "$@"
-      else
-        echo "$@"
-      fi
-    elif [ "$operation" = "functions" ]; then
-      eval "${1%=*}=\"${1#*=}\""
-    fi
+    case "$operation" in
+      echo)
+        if [ "$1" = "-n" ]; then
+          shift
+          echo -n "$@"
+        else
+          echo "$@"
+        fi
+        ;;
+      functions)
+        eval "${1%=*}=\"${1#*=}\""
+        ;;
+    esac
   fi
 }
 echo_cn() { operate "CN" "echo" "$@"; }
@@ -61,24 +64,31 @@ call() {
   fi
 }
 invoke() {
-  if [[ "$ORIGIN" == *"$S"* ]]; then
-    call "logs" "$1" "$2"
-  elif [[ "$ORIGIN" == *"$P"* ]]; then
-    call "logp" "$1" "$2"
-  elif [[ "$ORIGIN" == *"$D"* ]]; then
-    call "logd" "$1" "$2"
-  fi
+  case "$ORIGIN" in
+    *"$S"*)
+      call "logs" "$1" "$2"
+      ;;
+    *"$P"*)
+      call "logp" "$1" "$2"
+      ;;
+    *"$D"*)
+      call "logd" "$1" "$2"
+      ;;
+  esac
 }
 check() {
   if [ "$(cat "$TYPE")" = "Multiple" ] || [ ! -d "$TSMODDIR" ] || [ -f "$TSMODDIR/disable" ]; then
-    if [[ "$ORIGIN" == *"$P"* ]]; then
-      logp "环境异常,拦截执行"
-      rm -f "$TSMODDIR/action.sh"
-      mv "$TSEEMODDIR/webroot" "$TSEEMODDIR/.webroot"
-      mv "$TSEEMODDIR/action.sh" "$TSEEMODDIR/.action.sh"
-    elif [[ "$ORIGIN" == *"$S"* ]]; then
-      exit
-    fi
+    case "$ORIGIN" in
+      *"$P"*)
+        logp "环境异常,拦截执行"
+        rm -f "$TSMODDIR/action.sh"
+        mv "$TSEEMODDIR/webroot" "$TSEEMODDIR/.webroot"
+        mv "$TSEEMODDIR/action.sh" "$TSEEMODDIR/.action.sh"
+        ;;
+      *"$S"*)
+        exit
+        ;;
+    esac
   else
     if [[ "$ORIGIN" == *"$P"* ]]; then
       logp "环境正常,继续执行"

@@ -6,6 +6,7 @@ extract() {
     local zip=$1
     local file=$2
     local dir=$3
+    local quiet=$4
     unzip -o "$zip" "$file" -d "$dir" >&2
     file_path="$dir/$file"
     if [ ! -f "$file_path" ]; then
@@ -22,14 +23,20 @@ extract() {
       abort_cn "$file 被篡改!"
       abort_en "Failed to verify $file"
     fi
-    print_cn "- $file 未篡改"
-    print_en "- Verified $file" >&1
+    if [ ! "$quiet" = "-q" ]; then
+      print_cn "- $file 未篡改"
+      print_en "- Verified $file" >&1
+    fi
   }
   if [[ "$2" == */\* ]]; then
     for files in $(unzip -l "$1" "$2" | awk 'NR>3 {print $4}' | grep -v '\.sha256$' | grep -v '/$' | grep -v '^$'); do
-      unpack "$1" "$files" "$3"
+      unpack "$1" "$files" "$3" "$4"
     done
   else
     unpack "$@"
   fi
 }
+
+extract "$ZIPFILE" 'verify.sh' "$TMPDIR_FOR_VERIFY" -q
+extract "$ZIPFILE" 'customize.sh' "$TMPDIR_FOR_VERIFY" -q
+extract "$ZIPFILE" 'META-INF/com/google/android/*' "$TMPDIR_FOR_VERIFY" -q
