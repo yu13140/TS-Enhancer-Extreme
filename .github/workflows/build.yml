@@ -36,7 +36,7 @@ jobs:
           build-scan-terms-of-use-agree: "yes"
       - name: Build with Gradle
         shell: bash
-        run: ./gradlew zip --warning-mode all
+        run: ./gradlew zip
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
