@@ -62,7 +62,7 @@ android {
     buildFeatures {
         viewBinding = false
         buildConfig = true
-    aidl = false
+        aidl = false
     }
 
     packagingOptions {

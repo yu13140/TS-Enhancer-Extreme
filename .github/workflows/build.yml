@@ -36,11 +36,7 @@ jobs:
           build-scan-terms-of-use-agree: "yes"
       - name: Build with Gradle
         shell: bash
-        run: |
-          echo 'org.gradle.jvmargs=-Xmx2048m' >> gradle.properties
-          echo 'org.gradle.caching=true' >> gradle.properties
-          echo 'org.gradle.parallel=true' >> gradle.properties
-          ./gradlew zip --warning-mode all
+        run: ./gradlew zip --warning-mode all
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
