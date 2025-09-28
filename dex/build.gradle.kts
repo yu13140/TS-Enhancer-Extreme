@@ -41,8 +41,8 @@ variants.forEach { variantCapped ->
         )
 
         doLast {
-            val src = file(buildDir.resolve("intermediates/dex/$variantLowered/mergeDex$variantCapped/classes.dex"))
-            val dst = file(buildDir.resolve("outputs/dex/$variantLowered/classes.dex"))
+            val src = file(layout.buildDirectory.dir("intermediates/dex/$variantLowered/mergeDex$variantCapped/classes.dex").get())
+            val dst = file(layout.buildDirectory.dir("outputs/dex/$variantLowered/classes.dex").get())
 
             if (src.exists()) {
                 dst.parentFile.mkdirs()
