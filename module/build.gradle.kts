@@ -211,9 +211,9 @@ listOf("debug", "release").forEach { variantName ->
 
                 File(moduleOutputDir, "machikado").createNewFile()
 
-                sha256Files()
-
                 File(moduleOutputDir, "mazoku").createNewFile()
+                
+                sha256Files()
             }
         }
     }

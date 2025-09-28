@@ -1,4 +1,5 @@
 SKIPUNZIP=1
+set -x
 MIN_RELEASE=10
 RELEASE=$(grep_get_prop ro.build.version.release)
 [[ "$(grep_get_prop persist.sys.locale)" == *"zh"* || "$(grep_get_prop ro.product.locale)" == *"zh"* ]] && LOCALE="CN" || LOCALE="EN"
@@ -285,3 +286,4 @@ fi
 
 print_cn "- 安装完毕"
 print_en "- Install Done"
+set +x
