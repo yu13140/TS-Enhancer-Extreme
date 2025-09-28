@@ -56,7 +56,6 @@ service.sh
 module.prop
 banner.png
 machikado
-mazoku
 "
 #POST PROCESS#
 BACKUP1="$ADB/tsconfig_backup"

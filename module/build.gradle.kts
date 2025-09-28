@@ -93,12 +93,10 @@ listOf("debug", "release").forEach { variantName ->
                 moduleOutputDir.walkTopDown().forEach { file ->
                     if (file.isDirectory) return@forEach
                     if (file.name.endsWith(".sha256")) return@forEach
-
                     val md = MessageDigest.getInstance("SHA-256")
                     file.forEachBlock(4096) { bytes, size ->
                         md.update(bytes, 0, size)
                     }
-
                     File(file.path + ".sha256").writeText(md.digest().joinToString("") { "%02x".format(it) })
                 }
             }
@@ -115,7 +113,6 @@ listOf("debug", "release").forEach { variantName ->
                     sig.update(this.name.toByteArray())
                     sig.update(0)
                     val real = realFile ?: this
-                    
                     val buffer = ByteBuffer.allocate(8)
                         .order(ByteOrder.LITTLE_ENDIAN)
                         .putLong(real.length())
@@ -127,37 +124,8 @@ listOf("debug", "release").forEach { variantName ->
                 }
 
                 /* INFO:
-                   Mazoku is the file that holds signed hash of all files of TS Enhancer Extreme module, to ensure the zip (runtime and non-runtime) files hasn't been tampered with.
+                   Machikado is the name of files that holds signed hash of all runtime files of TS Enhancer Extreme module, to ensure the runtime files hasn't been tampered with.
                 */
-                fun mazokuSign() {
-                    sig.initSign(privKey)
-
-                    val filesToProcess = TreeSet<File> { f1, f2 ->
-                        f1.path.replace("\\", "/")
-                            .compareTo(f2.path.replace("\\", "/"))
-                    }
-
-                    moduleOutputDir.walkTopDown().forEach { file ->
-                        if (!file.isFile) return@forEach
-
-                        val fileName = file.name
-                        if (fileName == "mazoku") return@forEach
-
-                        filesToProcess.add(file)
-                    }
-
-                    filesToProcess.forEach { file -> file.sha(file) }
-
-                    val mazokuSignatureFile = File(moduleOutputDir, "mazoku")
-                    mazokuSignatureFile.writeBytes(sig.sign())
-                    mazokuSignatureFile.appendBytes(publicKey)
-                    val md = MessageDigest.getInstance("SHA-256")
-                    mazokuSignatureFile.forEachBlock(4096) { bytes, size ->
-                        md.update(bytes, 0, size)
-                    }
-                    File(moduleOutputDir, "mazoku.sha256").writeText(md.digest().joinToString("") { "%02x".format(it) })
-                }
-
                 fun machikadoSign(name: String = "machikado") {
                     val set = TreeSet<Pair<File, File?>> { o1, o2 ->
                         o1.first.path.replace("\\", "/")
@@ -196,22 +164,15 @@ listOf("debug", "release").forEach { variantName ->
                     signFile.appendBytes(publicKey)
                 }
 
-                /* INFO:
-                   Machikado is the name of files that holds signed hash of all runtime files of TS Enhancer Extreme module, to ensure the runtime files hasn't been tampered with.
-                */
                 println("=== Guards the peace of Machikado ===")
 
                 machikadoSign()
 
                 sha256Files()
-
-                mazokuSign()
             } else {
                 println("no private_key found, this build will not be signed")
 
                 File(moduleOutputDir, "machikado").createNewFile()
-
-                File(moduleOutputDir, "mazoku").createNewFile()
                 
                 sha256Files()
             }
