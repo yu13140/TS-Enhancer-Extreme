@@ -41,10 +41,10 @@ android {
             versionNameSuffix '-debug'
         }
         release {
-            minifyEnabled true
-            shrinkResources true
-            vcsInfo.include false
-            signingConfig signingConfigs.debug
+        minifyEnabled = true
+        shrinkResources = true
+        vcsInfo.include = false
+        signingConfig = signingConfigs.debug
             proguardFiles 'proguard-rules.pro'
         }
     }
@@ -72,15 +72,15 @@ android {
     }
 
     androidResources {
-    generateLocaleConfig false
+        generateLocaleConfig = false
     }
 
     lint {
-        checkReleaseBuilds false
-        abortOnError false
+        checkReleaseBuilds = false
+        abortOnError = false
         disable 'AppCompatResource'
     }
-    dependenciesInfo.includeInApk false
+    dependenciesInfo.includeInApk = false
 }
 
 tasks.withType(CompileArtProfileTask.class).configureEach {
