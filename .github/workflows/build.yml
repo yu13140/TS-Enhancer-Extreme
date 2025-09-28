@@ -5,13 +5,11 @@ on:
     branches: '**'
     paths-ignore:
       - '**/*.md'
-      - '.github/workflows/**'
     tags-ignore:
       - '**'
   pull_request:
     paths-ignore:
       - '**/*.md'
-      - '.github/workflows/**'
 
 jobs:
   build:
