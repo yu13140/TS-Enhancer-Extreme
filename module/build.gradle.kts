@@ -12,6 +12,10 @@ plugins {
     base
 }
 
+tasks.withType<Copy>().configureEach {
+    filteringCharset = "UTF-8"
+}
+
 val moduleId: String by rootProject.extra
 val moduleName: String by rootProject.extra
 val verName: String by rootProject.extra
@@ -65,7 +69,13 @@ listOf("debug", "release").forEach { variantName ->
         from("$projectDir/src") {
             include("customize.sh")
             if (variantLowered != "debug") {
-                filter { line -> if (line.trim() in listOf("set -x", "set +x")) null else line }
+                filter { line ->
+                    if (line.trim() in listOf("set -x", "set +x")) {
+                        null
+                    } else {
+                        line
+                    }
+                }
             }
         }
         from("$projectDir/src") {
