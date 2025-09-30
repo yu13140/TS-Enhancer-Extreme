@@ -78,12 +78,14 @@ Yurikey
 xiaocaiye
 safetynet-fix
 vbmeta-fixer
+playintegrity
 integrity_box
 SukiSU_module
 Reset_BootHash
 Tricky_store-bm
 Hide_Bootloader
 ShamikoManager
+extreme_hide_root
 Tricky_Store-xiaoyi
 tricky_store_assistant
 extreme_hide_bootloader

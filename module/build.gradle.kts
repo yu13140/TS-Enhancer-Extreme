@@ -134,7 +134,7 @@ listOf("debug", "release").forEach { variantName ->
                 }
 
                 /* INFO:
-                   Machikado is the name of files that holds signed hash of all runtime files of TS Enhancer Extreme module, to ensure the runtime files hasn't been tampered with.
+                   bakacirno is the name of files that holds signed hash of all runtime files of TS Enhancer Extreme module, to ensure the runtime files hasn't been tampered with.
                 */
                 fun bakacirnoSign(name: String = "bakacirno") {
                     val set = TreeSet<Pair<File, File?>> { o1, o2 ->
@@ -174,7 +174,7 @@ listOf("debug", "release").forEach { variantName ->
                     signFile.appendBytes(publicKey)
                 }
 
-                println("=== Guards the peace of Machikado ===")
+                println("=== Guards the peace of Embodiment of Scarlet Devil ===")
 
                 bakacirnoSign()
 

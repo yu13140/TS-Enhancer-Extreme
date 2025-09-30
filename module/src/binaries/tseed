@@ -57,10 +57,10 @@ SUCKYSUTAG=0
 APATCHTAG=0
 MAGISKTAG=0
 dmesg > "$DMESGLOG"
-if grep -q -F "KernelSU" "$DMESGLOG"; then
+if grep -q -F -e "KernelSU" "$DMESGLOG"; then
   KERNELSU_KTAG=1
   if [[ -d "$ADB/ksu" && -f "$ADB/ksud" ]]; then
-    if grep -q -F "KP hook sukisu_kpm" "$DMESGLOG" || [[ "$($ADB/ksud -V 2>/dev/null)" == *"zako"* ]]; then
+    if grep -q -F -e "KP hook sukisu_kpm" "$DMESGLOG" || [[ "$($ADB/ksud -V 2>/dev/null)" == *"zako"* ]]; then
       SUCKYSUTAG=1
     else
       KERNELSUTAG=1
@@ -71,7 +71,7 @@ if grep -q -F -e "/debug_ramdisk/magisk" -e "magiskinit" "$DMESGLOG"; then
   MAGISK_KTAG=1
   [[ -d "$ADB/magisk" && -f "$ADB/magisk.db" ]] && MAGISKTAG=1
 fi
-if grep -q -F "KP I commit_common_su" "$DMESGLOG"; then
+if grep -q -F -e "KP I commit_common_su" "$DMESGLOG"; then
   APATCH_KTAG=1
   [[ -d "$ADB/ap" && -f "$ADB/apd" ]] && APATCHTAG=1
 fi
@@ -178,7 +178,7 @@ Options:
   -h, -help"
 )
 [ "$1" = "" ] && help && exit 2
-if sed -n '2p' "$TSMODDIR/module.prop" | grep -q -F "OSS"; then
+if sed -n '2p' "$TSMODDIR/module.prop" | grep -q -F -e "OSS"; then
   NICENAME="TrickyStoreOSS"
 else
   NICENAME="TrickyStore"
@@ -317,7 +317,8 @@ case "$1" in
       exit 1
     fi
     echo -n "- 解码密钥..."
-    if echo "$(printf "$(sed 's/\(..\)/\\x\1/g' "$TMPDIR/keybox.hex")" | tr -d '\0' | base64 -d)" > "$TMPDIR/keybox.xml"; then
+    echo "$(printf "$(sed 's/\(..\)/\\x\1/g' "$TMPDIR/keybox.hex")" | tr -d '\0' | base64 -d)" > "$TMPDIR/keybox.xml"
+    if grep -q -F -e "-----BEGIN EC PRIVATE KEY-----" "$TMPDIR/keybox.xml"; then
       echo "完毕"
     else
       echo "失败"
@@ -336,9 +337,9 @@ case "$1" in
     rm -f "$TMPDIR/keybox.hex"
     rm -f "$TMPDIR/keybox.bin"
     ;;
-  -b)
-    MAINLINK="https://raw.githubusercontent.com/dpejoh/yurikey/main/conf"
-    SPARELINK="https://raw.gitmirror.com/dpejoh/yurikey/main/conf"
+    -b)
+    MAINLINK="https://raw.githubusercontent.com/MeowDump/MeowDump/refs/heads/main/NullVoid/ShockWave.tar"
+    SPARELINK="https://raw.gitmirror.com/MeowDump/MeowDump/refs/heads/main/NullVoid/ShockWave.tar"
     echo -n "- 下载文件..."
     if crawl "$MAINLINK" > "$TMPDIR/keybox.b64" || crawl "$SPARELINK" > "$TMPDIR/keybox.b64"; then
       echo "完毕"
@@ -347,9 +348,11 @@ case "$1" in
       exit 1
     fi
     echo -n "- 解码密钥..."
-    base64 -d "$TMPDIR/keybox.b64" > "$TMPDIR/keybox.sh"
-    eval $(grep "^KEYBOX_BASE64_PAYLOAD=" "$TMPDIR/keybox.sh")
-    if printf '%s' "$KEYBOX_BASE64_PAYLOAD" | base64 -d > "$TMPDIR/keybox.xml"; then
+    base64 -d "$TMPDIR/keybox.b64" | base64 -d | base64 -d | base64 -d | base64 -d | base64 -d | base64 -d | base64 -d | base64 -d | base64 -d | xxd -r -p | tr 'A-Za-z' 'N-ZA-Mn-za-m' > "$TMPDIR/keybox.xml"
+    for WORD in every soul will taste death; do
+      sed -i "s/$WORD//g" "$TMPDIR/keybox.xml"
+    done
+    if grep -q -F -e "-----BEGIN EC PRIVATE KEY-----" "$TMPDIR/keybox.xml"; then
       echo "完毕"
     else
       echo "失败"
@@ -365,7 +368,6 @@ case "$1" in
       exit 1
     fi
     echo "- 清理缓存"
-    rm -f "$TMPDIR/keybox.sh"
     rm -f "$TMPDIR/keybox.b64"
     ;;
   *) error "$1" "stealkeybox <Basic arguments>" "-help";;
@@ -491,6 +493,7 @@ Yurikey
 xiaocaiye
 safetynet-fix
 vbmeta-fixer
+playintegrity
 integrity_box
 SukiSU_module
 Reset_BootHash
