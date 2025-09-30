@@ -9,7 +9,7 @@ Arguments:
   --rootdetect
   --startwebui
   --passvbhash
-  --stealkeybox [Basic |-a|-b|-c ]
+  --stealkeybox [Basic |-a|-b|-c| ]
   --staterefresh
   --passpropstate
   --conflictappcheck
