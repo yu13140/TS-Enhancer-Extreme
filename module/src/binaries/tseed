@@ -42,8 +42,7 @@ logce () { echo "$1" ; logc "$1"; }
 crawl() {
 if command -v curl >/dev/null 2>&1; then
   curl --connect-timeout 10 -Ls "$1"
-elif command -v busybox >/dev/null 2>&1; then
-  PATH="$ADB/ap/bin:$ADB/ksu/bin:$ADB/magisk:$PATH"
+elif PATH="$ADB/ap/bin:$ADB/ksu/bin:$ADB/magisk:$PATH" && command -v busybox >/dev/null 2>&1; then
   busybox wget -T 10 --no-check-certificate -qO- "$1"
 fi
 }
@@ -339,14 +338,16 @@ case "$1" in
     ;;
   -b)
     MAINLINK="https://raw.githubusercontent.com/dpejoh/yurikey/main/conf"
+    SPARELINK="https://raw.gitmirror.com/dpejoh/yurikey/main/conf"
     echo -n "- 下载文件..."
-    if crawl "$MAINLINK" | base64 -d > "$TMPDIR/keybox.sh"; then
+    if crawl "$MAINLINK" > "$TMPDIR/keybox.b64" || crawl "$SPARELINK" > "$TMPDIR/keybox.b64"; then
       echo "完毕"
     else
       echo "失败"
       exit 1
     fi
     echo -n "- 解码密钥..."
+    base64 -d "$TMPDIR/keybox.b64" > "$TMPDIR/keybox.sh"
     eval $(grep "^KEYBOX_BASE64_PAYLOAD=" "$TMPDIR/keybox.sh")
     if printf '%s' "$KEYBOX_BASE64_PAYLOAD" | base64 -d > "$TMPDIR/keybox.xml"; then
       echo "完毕"
@@ -365,6 +366,7 @@ case "$1" in
     fi
     echo "- 清理缓存"
     rm -f "$TMPDIR/keybox.sh"
+    rm -f "$TMPDIR/keybox.b64"
     ;;
   *) error "$1" "stealkeybox <Basic arguments>" "-help";;
 esac
