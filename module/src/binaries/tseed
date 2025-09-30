@@ -298,7 +298,7 @@ Usage: tseed stealkeybox <Basic arguments>
 Arguments:
   -a (Keybox by Tricky Addon)
   -b (Keybox by Integrity Box)
-  -c (Keybox by YuriKey)
+  -c (Keybox by YuriKey Manager)
 
 Options:
   -h, -help"
