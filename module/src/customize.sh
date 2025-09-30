@@ -55,7 +55,7 @@ service.dex
 service.sh
 module.prop
 banner.png
-machikado
+bakacirno
 "
 #POST PROCESS#
 BACKUP1="$ADB/tsconfig_backup"
