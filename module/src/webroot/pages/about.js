@@ -5,7 +5,7 @@
 
 const AboutPage = {
     moduleInfo: {},
-    version: '0.8.3',
+    version: 'v0.8.3-RC1',
     config: {
         showThemeToggle: false
     },
@@ -266,10 +266,9 @@ const AboutPage = {
                 <div class="about-modal-content">
                     <div class="log-content-container">
                         <div class="log-header">
-                            <h3 class="section-title">
+                            
                                 <span class="material-symbols-rounded">description</span>
-                                ${I18n.translate('LOG_CONTENT', '日志内容')}
-                            </h3>
+                            
                             <div class="log-info">
                                 <span class="log-file-path">/data/adb/ts_enhancer_extreme/log/log.log</span>
                             </div>
